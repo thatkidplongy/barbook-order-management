@@ -73,13 +73,11 @@ function App() {
                 Advanced Order Management & Analytics Dashboard
               </p>
             </div>
-            <div className="hidden md:flex items-center gap-4">
-              <div className="px-4 py-2 barbook-card rounded-full">
-                <span className="text-sm font-medium text-barbook-gray-light">
-                  Live Dashboard
-                </span>
-                <div className="inline-block w-2 h-2 bg-barbook-accent rounded-full ml-2 animate-pulse"></div>
-              </div>
+            <div className="hidden md:flex items-center gap-2 px-4 py-2 bg-green-50 rounded-full border border-green-200">
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+              <span className="text-sm font-medium text-green-700">
+                Live Dashboard
+              </span>
             </div>
           </div>
         </header>
