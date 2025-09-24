@@ -1,6 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* BarBooks Theme Base Styles */
+@layer base {
+  * {
+    @apply border-barbook-navy-light;
+  }
+
+  body {
+    @apply bg-barbook-navy text-barbook-gray font-barbook;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-image: radial-gradient(
+        ellipse at top right,
+        #1a2130 0%,
+        transparent 70%
+      ),
+      radial-gradient(ellipse at top center, #2a3441 0%, transparent 60%),
+      linear-gradient(135deg, #21293b 0%, #1a2130 50%, #2a3441 100%);
+    min-height: 100vh;
+  }
+
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+      monospace;
+  }
+}
+
+/* BarBooks Component Styles */
+@layer components {
+  .barbook-card {
+    @apply bg-white/90 backdrop-blur-sm border border-gray-200 rounded-xl shadow-lg;
+  }
+
+  .barbook-button {
+    @apply bg-barbook-accent hover:bg-barbook-accent-light text-white font-medium px-6 py-3 rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-barbook-accent/25;
+  }
+
+  .barbook-input {
+    @apply bg-white/80 border border-gray-300 text-gray-800 placeholder-gray-500 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-barbook-accent focus:border-barbook-accent;
+  }
+
+  .barbook-table {
+    @apply bg-white/90 backdrop-blur-sm border border-gray-200 rounded-lg overflow-hidden;
+  }
+
+  .barbook-table th {
+    @apply bg-gray-50 text-gray-700 font-semibold px-6 py-4 text-left;
+  }
+
+  .barbook-table td {
+    @apply px-6 py-4 text-gray-600 border-t border-gray-100;
+  }
+}
 
 /* Custom shimmer animation for skeleton loaders */
 @keyframes shimmer {
@@ -31,16 +87,30 @@
   animation: enhanced-pulse 1.5s ease-in-out infinite;
 }
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* BarBooks specific animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(74, 144, 226, 0.6);
+  }
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite alternate;
 }

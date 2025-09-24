@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Order } from "../../types";
 import {
   SortField,
@@ -37,12 +37,22 @@ export function OrderListManager({
   const [localFilter, setLocalFilter] = useState(productFilter);
   const [sortConfig, setSortConfig] = useState(getDefaultSortConfig());
 
+  // Sync local filter with parent filter
+  useEffect(() => {
+    setLocalFilter(productFilter);
+  }, [productFilter]);
+
   const handleFilterChange = (value: string) => {
     setLocalFilter(value);
   };
 
   const handleSearch = () => {
     onProductFilterChange(localFilter);
+  };
+
+  const handleClear = () => {
+    setLocalFilter("");
+    onProductFilterChange("");
   };
 
   const handleSort = (field: SortField) => {
@@ -90,6 +100,7 @@ export function OrderListManager({
           value={localFilter}
           onChange={handleFilterChange}
           onSearch={handleSearch}
+          onClear={handleClear}
         />
       </div>
 

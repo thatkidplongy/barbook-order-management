@@ -73,7 +73,7 @@ export function getNextSortConfig(
  */
 export function getDefaultSortConfig(): SortConfig {
   return {
-    field: "id",
-    direction: "desc",
+    field: "product",
+    direction: "asc",
   };
 }

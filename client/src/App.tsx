@@ -2,6 +2,7 @@ import { useState } from "react";
 import { SummaryCard } from "./components/SummaryCard";
 import { OrderForm } from "./components/OrderForm";
 import { OrderList } from "./components/OrderList";
+import { BarBooksLogo } from "./components/BarBooksLogo";
 import { useSummary } from "./hooks/useSummary";
 import { useOrders } from "./hooks/useOrders";
 import { useCreateOrder } from "./hooks/useCreateOrder";
@@ -59,49 +60,32 @@ function App() {
   const totalPages = Math.max(1, Math.ceil(totalOrders / ITEMS_PER_PAGE));
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+    <div className="min-h-screen">
       <div className="container mx-auto px-4 py-8 max-w-7xl">
         {/* Header Section */}
         <header className="mb-12">
           <div className="flex items-center justify-between">
             <div>
-              <div className="flex items-center gap-3 mb-2">
-                <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-xl flex items-center justify-center">
-                  <svg
-                    className="w-6 h-6 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                    />
-                  </svg>
-                </div>
-                <h1 className="text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-indigo-900 bg-clip-text text-transparent">
-                  BarBook
-                </h1>
+              <div className="flex items-center gap-4 mb-3">
+                <BarBooksLogo size="lg" className="animate-float" />
               </div>
-              <p className="text-lg text-gray-600 font-medium">
+              <p className="text-lg text-barbook-gray-light font-medium ml-16">
                 Advanced Order Management & Analytics Dashboard
               </p>
             </div>
             <div className="hidden md:flex items-center gap-4">
-              <div className="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-gray-200">
-                <span className="text-sm font-medium text-gray-600">
+              <div className="px-4 py-2 barbook-card rounded-full">
+                <span className="text-sm font-medium text-barbook-gray-light">
                   Live Dashboard
                 </span>
-                <div className="inline-block w-2 h-2 bg-green-500 rounded-full ml-2 animate-pulse"></div>
+                <div className="inline-block w-2 h-2 bg-barbook-accent rounded-full ml-2 animate-pulse"></div>
               </div>
             </div>
           </div>
         </header>
 
         {createError && (
-          <div className="mb-6 bg-red-50 border-l-4 border-red-400 p-4 rounded-r-lg shadow-sm">
+          <div className="mb-6 barbook-card border-l-4 border-red-400 p-4">
             <div className="flex items-center">
               <svg
                 className="w-5 h-5 text-red-400 mr-3"
@@ -115,10 +99,10 @@ function App() {
                 />
               </svg>
               <div>
-                <h3 className="text-sm font-medium text-red-800">
+                <h3 className="text-sm font-medium text-red-300">
                   Error creating order
                 </h3>
-                <p className="text-sm text-red-700 mt-1">{createError}</p>
+                <p className="text-sm text-red-200 mt-1">{createError}</p>
               </div>
             </div>
           </div>

@@ -42,7 +42,7 @@ export function OrderForm({ onSubmit, loading }: OrderFormProps) {
   };
 
   return (
-    <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-gray-200">
+    <div className="bg-white/95 backdrop-blur-sm p-8 rounded-xl shadow-sm border border-gray-100">
       <div className="flex items-center gap-3 mb-6">
         <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center">
           <svg
@@ -60,7 +60,7 @@ export function OrderForm({ onSubmit, loading }: OrderFormProps) {
           </svg>
         </div>
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">Create Order</h2>
+          <h2 className="text-2xl font-bold text-gray-800">Create Order</h2>
           <p className="text-gray-600">Add a new order to the system</p>
         </div>
       </div>
@@ -96,7 +96,7 @@ export function OrderForm({ onSubmit, loading }: OrderFormProps) {
               value={formData.product}
               onChange={handleChange}
               required
-              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200 bg-white/50"
+              className="w-full pl-10 pr-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200 text-gray-800 placeholder-gray-500"
               placeholder="Enter product name"
             />
           </div>
@@ -134,7 +134,7 @@ export function OrderForm({ onSubmit, loading }: OrderFormProps) {
                 onChange={handleChange}
                 min="1"
                 required
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200 bg-white/50"
+                className="w-full pl-10 pr-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200 text-gray-800 placeholder-gray-500"
                 placeholder="1"
               />
             </div>
@@ -172,7 +172,7 @@ export function OrderForm({ onSubmit, loading }: OrderFormProps) {
                 min="0"
                 step="0.01"
                 required
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200 bg-white/50"
+                className="w-full pl-10 pr-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200 text-gray-800 placeholder-gray-500"
                 placeholder="0.00"
               />
             </div>
@@ -187,7 +187,7 @@ export function OrderForm({ onSubmit, loading }: OrderFormProps) {
             formData.qty <= 0 ||
             formData.price < 0
           }
-          className="w-full bg-gradient-to-r from-emerald-500 to-teal-600 text-white py-4 px-6 rounded-xl font-semibold hover:from-emerald-600 hover:to-teal-700 disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed flex items-center justify-center transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 disabled:transform-none"
+          className="w-full bg-gradient-to-r from-emerald-500 to-teal-600 text-white py-4 px-6 rounded-xl font-semibold hover:from-emerald-600 hover:to-teal-700 disabled:bg-barbook-navy-light disabled:text-barbook-gray-dark disabled:cursor-not-allowed flex items-center justify-center transition-all duration-200 shadow-lg hover:shadow-xl hover:shadow-emerald-500/25 transform hover:-translate-y-0.5 disabled:transform-none disabled:shadow-none"
         >
           {loading ? (
             <>
@@ -214,7 +214,7 @@ export function OrderForm({ onSubmit, loading }: OrderFormProps) {
               Creating Order...
             </>
           ) : (
-            <>
+            <div className="text-black flex">
               <svg
                 className="w-5 h-5 mr-2"
                 fill="none"
@@ -229,7 +229,7 @@ export function OrderForm({ onSubmit, loading }: OrderFormProps) {
                 />
               </svg>
               Create Order
-            </>
+            </div>
           )}
         </button>
       </form>
