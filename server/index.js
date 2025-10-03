@@ -19,6 +19,11 @@ const {
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// Debug environment variables
+console.log("NODE_ENV:", process.env.NODE_ENV);
+console.log("PORT:", PORT);
+console.log("DB_PATH:", process.env.DB_PATH);
+
 // Middleware
 app.use(cors());
 app.use(express.json());
@@ -113,10 +118,16 @@ app.use((err, req, res, next) => {
 if (process.env.NODE_ENV === "production") {
   app.get("*", (req, res) => {
     const indexPath = path.join(__dirname, "../client/dist/index.html");
+    console.log("Production mode - serving React app");
+    console.log("Looking for file at:", indexPath);
+    console.log("File exists:", require("fs").existsSync(indexPath));
+
     // Check if the file exists
     if (require("fs").existsSync(indexPath)) {
+      console.log("Serving React app from:", indexPath);
       res.sendFile(indexPath);
     } else {
+      console.log("React app not found, showing API info");
       res.status(200).json({
         message: "BarBook Order Management API",
         status: "Backend running successfully",
@@ -130,6 +141,7 @@ if (process.env.NODE_ENV === "production") {
     }
   });
 } else {
+  console.log("Development mode - using 404 handler");
   // 404 handler for development
   app.use("*", (req, res) => {
     res.status(404).json({ error: "Route not found" });
