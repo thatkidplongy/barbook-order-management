@@ -1,4 +1,3 @@
-import React from "react";
 import { Summary } from "../../types";
 import { SummaryCardSkeleton } from "./SummaryCardSkeleton";
 import { MetricCard } from "./MetricCard";

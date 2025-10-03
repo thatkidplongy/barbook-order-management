@@ -1,4 +1,3 @@
-import React from "react";
 import { Order } from "../../types";
 import { SortField, SortDirection } from "../../utils/sorting";
 import { formatCurrency } from "../../utils/formatting";

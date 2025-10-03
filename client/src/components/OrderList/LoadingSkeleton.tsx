@@ -1,5 +1,3 @@
-import React from "react";
-
 export function LoadingSkeleton() {
   return (
     <div className="bg-white p-6 rounded-lg shadow-md">

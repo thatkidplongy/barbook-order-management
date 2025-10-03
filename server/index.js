@@ -23,6 +23,11 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
+// Serve static files from the React app build
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../client/dist")));
+}
+
 // Request logging middleware
 app.use((req, res, next) => {
   console.log(`${new Date().toISOString()} - ${req.method} ${req.path}`);
@@ -104,10 +109,32 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: "Internal server error" });
 });
 
-// 404 handler
-app.use("*", (req, res) => {
-  res.status(404).json({ error: "Route not found" });
-});
+// Serve React app for all non-API routes in production
+if (process.env.NODE_ENV === "production") {
+  app.get("*", (req, res) => {
+    const indexPath = path.join(__dirname, "../client/dist/index.html");
+    // Check if the file exists
+    if (require("fs").existsSync(indexPath)) {
+      res.sendFile(indexPath);
+    } else {
+      res.status(200).json({
+        message: "BarBook Order Management API",
+        status: "Backend running successfully",
+        frontend: "Building...",
+        endpoints: {
+          health: "/api/health",
+          orders: "/api/orders",
+          summary: "/api/summary",
+        },
+      });
+    }
+  });
+} else {
+  // 404 handler for development
+  app.use("*", (req, res) => {
+    res.status(404).json({ error: "Route not found" });
+  });
+}
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

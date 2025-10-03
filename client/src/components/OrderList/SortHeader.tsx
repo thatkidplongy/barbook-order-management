@@ -1,4 +1,3 @@
-import React from "react";
 import { SortField, SortDirection } from "../../utils/sorting";
 
 interface SortHeaderProps {
@@ -8,62 +7,7 @@ interface SortHeaderProps {
   onClearSort: () => void;
 }
 
-export function SortHeader({
-  field,
-  direction,
-  onSort,
-  onClearSort,
-}: SortHeaderProps) {
-  const getSortIcon = (sortField: SortField) => {
-    if (field !== sortField) {
-      return (
-        <svg
-          className="w-4 h-4 text-gray-400 opacity-50"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"
-          />
-        </svg>
-      );
-    }
-
-    return direction === "asc" ? (
-      <svg
-        className="w-4 h-4 text-blue-600"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M5 15l7-7 7 7"
-        />
-      </svg>
-    ) : (
-      <svg
-        className="w-4 h-4 text-blue-600"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M19 9l-7 7-7-7"
-        />
-      </svg>
-    );
-  };
-
+export function SortHeader({ field, direction, onClearSort }: SortHeaderProps) {
   return (
     <div className="flex items-center gap-2 text-sm text-gray-500">
       <svg
