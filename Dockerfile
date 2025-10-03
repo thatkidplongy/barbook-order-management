@@ -14,7 +14,7 @@ RUN yarn install --frozen-lockfile
 FROM base AS client-builder
 WORKDIR /app
 COPY client/package.json ./client/
-COPY client/ ./
+COPY client/ ./client/
 RUN cd client && yarn install --frozen-lockfile && yarn build
 
 # Production image
