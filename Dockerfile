@@ -27,7 +27,7 @@ RUN adduser --system --uid 1001 nodejs
 
 # Copy built application
 COPY --from=deps /app/node_modules ./node_modules
-COPY --from=client-builder /app/dist ./client/dist
+COPY --from=client-builder /app/client/dist ./client/dist
 COPY server/ ./server/
 COPY package.json ./
 
