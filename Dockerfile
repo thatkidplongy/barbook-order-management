@@ -7,7 +7,6 @@ WORKDIR /app
 
 # Copy package files
 COPY package.json yarn.lock ./
-COPY client/package.json ./client/
 RUN yarn install --frozen-lockfile
 
 # Build the client

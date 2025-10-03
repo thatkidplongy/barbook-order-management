@@ -13,8 +13,7 @@
     "start": "NODE_ENV=production yarn server:start",
     "test": "jest",
     "test:watch": "jest --watch",
-    "seed": "node server/seed.js",
-    "postinstall": "yarn client:build"
+    "seed": "node server/seed.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
