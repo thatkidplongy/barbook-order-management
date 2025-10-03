@@ -19,11 +19,6 @@ const {
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Debug environment variables
-console.log("NODE_ENV:", process.env.NODE_ENV);
-console.log("PORT:", PORT);
-console.log("DB_PATH:", process.env.DB_PATH);
-
 // Middleware
 app.use(cors());
 app.use(express.json());
